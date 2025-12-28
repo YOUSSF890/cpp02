@@ -66,17 +66,25 @@ class A
     }
 };
 
+// int main()
+// {
+
+//     // Creating an object of class A
+//     A obj1;
+//     obj1.x = 10;
+//     cout << "obj1's x = " << obj1.x << endl;
+
+//     // Creating another object by copying already created object
+//     A obj2(obj1);
+    
+//     cout << "obj2's x = " << obj2.x << endl;
+//     return 0;
+// }
 int main()
 {
-
-    // Creating an object of class A
-    A obj1;
-    obj1.x = 10;
-    cout << "obj1's x = " << obj1.x << endl;
-
-    // Creating another object by copying already created object
-    A obj2(obj1);
-    
-    cout << "obj2's x = " << obj2.x << endl;
-    return 0;
+    A a;
+    a.x = 10;
+    const A &b = a;
+    A &c = b;
+    std::cout << "b = " << b.x << endl;
 }

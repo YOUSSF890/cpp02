@@ -2,6 +2,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -19,7 +20,6 @@ class Fixed
             this->fixed_point = c.getRawBits();
             return *this;
         }
-        std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
         Fixed(const Fixed &a);
         int getRawBits(void) const;
         void setRawBits(int const raw);
@@ -28,5 +28,6 @@ class Fixed
 
 };
 
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif

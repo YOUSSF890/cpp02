@@ -5,8 +5,8 @@ int main( void )
     Fixed a;
     Fixed b;
     Fixed c;
-    c.setRawBits(10);
-    a.setRawBits(15);
+    // c.setRawBits(10);
+    // a.setRawBits(15);
 
     // c = a + b;
     // std::cout << c.getRawBits() << std::endl;
@@ -14,11 +14,13 @@ int main( void )
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
     std::cout << a << std::endl;
-    // std::cout << a++ << std::endl;
+    std::cout << a++ << std::endl;
     std::cout << a << std::endl;
     // std::cout << b << std::endl;
-    // std::cout << Fixed::max( a, c ) << std::endl;
-    // std::cout << Fixed::min( a, c ) << std::endl;
+    std::cout << Fixed::max( a, c ) << std::endl;
+    std::cout << Fixed::max( a, c ) << std::endl;
+    std::cout << Fixed::min( a, c ) << std::endl;
+    std::cout << Fixed::min( a, c ) << std::endl;
     // c = Fixed::max( a, c );
     // std::cout << c.getRawBits() << std::endl;
 

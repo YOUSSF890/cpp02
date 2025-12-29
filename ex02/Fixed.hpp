@@ -14,6 +14,7 @@ class Fixed
         Fixed(int const b);
         Fixed(float const b);
         Fixed(const Fixed &a);
+        // Fixed(const Fixed &a, const F ixed &b);
 
         Fixed& operator=(const Fixed& c);
         
@@ -24,9 +25,9 @@ class Fixed
         int     toInt( void ) const;
 
         static Fixed& min(Fixed& fixed1, Fixed & fixed2);
-        static Fixed& min(const Fixed& fixed1, const Fixed & fixed2);
+        static const Fixed& min(const Fixed& fixed1, const Fixed & fixed2);
         static Fixed& max(Fixed& fixed1, Fixed & fixed2);
-        static Fixed& max(const Fixed& fixed1, const Fixed & fixed2);
+        static const Fixed& max(const Fixed& fixed1, const Fixed & fixed2);
         
 
         bool operator>(const Fixed& fixed) const;

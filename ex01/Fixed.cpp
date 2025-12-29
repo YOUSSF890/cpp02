@@ -10,8 +10,8 @@ Fixed::Fixed()
 
 Fixed::Fixed(const Fixed &a)
 {
-    this->fixed_point = a.getRawBits();
     std::cout << "Copy constructor called" << std:: endl;
+    *this = a;
 }
 
 Fixed::Fixed(int const b)
@@ -49,6 +49,13 @@ int Fixed::toInt( void ) const
 {
     int value =  this->fixed_point / (1 << this->fractional_bits);
     return (value);
+}
+
+Fixed& Fixed::operator=(const Fixed& c)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    this->fixed_point = c.getRawBits();
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed)

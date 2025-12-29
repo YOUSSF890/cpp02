@@ -14,12 +14,12 @@ class Fixed
         Fixed(int const b);
         Fixed(float const b);
         ~Fixed();
-        Fixed& operator=(const Fixed& c)
-        {
-            std::cout << "Copy assignment operator called" << std::endl;
-            this->fixed_point = c.getRawBits();
-            return *this;
-        }
+        Fixed& operator=(const Fixed& c);
+        // {
+        //     std::cout << "Copy assignment operator called" << std::endl;
+        //     this->fixed_point = c.getRawBits();
+        //     return *this;
+        // }
         Fixed(const Fixed &a);
         int getRawBits(void) const;
         void setRawBits(int const raw);

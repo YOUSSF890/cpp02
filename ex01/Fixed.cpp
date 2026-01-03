@@ -41,7 +41,7 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat( void ) const
 {
-    float value =  (float)this->fixed_point / (float)(1 << this->fractional_bits);
+    float value = this->fixed_point / (float)(1 << this->fractional_bits);
     return (value);
 }
 

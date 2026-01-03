@@ -83,13 +83,13 @@ Fixed Fixed::operator+(const Fixed& fixed) const {
 
 Fixed Fixed::operator*(const Fixed& fixed) const {
     Fixed c;
-    c.fixed_point = (this->fixed_point * fixed.fixed_point) / 256;
+    c.fixed_point = (this->fixed_point * fixed.fixed_point) / (1 << this->fractional_bits);
     return (c);
 }
 
 Fixed Fixed::operator/(const Fixed& fixed) const {
     Fixed c;
-    c.fixed_point = ((float)this->fixed_point / (float)fixed.fixed_point) * 256;
+    c.fixed_point = ((float)this->fixed_point / (float)fixed.fixed_point) * (1 << this->fractional_bits);
     return (c);
 }
 

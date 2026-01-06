@@ -11,12 +11,12 @@ private:
 
 public:
     Fixed();
+    Fixed(const Fixed &obj);
+    Fixed &operator=(const Fixed &obj);
     ~Fixed();
-    Fixed &operator=(const Fixed &);
 
-    Fixed(const Fixed &a);
     int getRawBits(void) const;
-    void setRawBits(int const raw);
+    void setRawBits(const int raw);
 };
 
 #endif

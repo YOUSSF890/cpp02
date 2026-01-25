@@ -14,7 +14,6 @@ class Fixed
         Fixed(int const b);
         Fixed(float const b);
         Fixed(const Fixed &a);
-        // Fixed(const Fixed &a, const F ixed &b);
 
         Fixed& operator=(const Fixed& c);
         

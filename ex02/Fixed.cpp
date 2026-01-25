@@ -3,21 +3,21 @@
 const int Fixed::fractional_bits = 8;
 
 Fixed::Fixed() {
-    this->fixed_point = 0;
+    fixed_point = 0;
 }
 
 Fixed::Fixed(const Fixed &a) {
-    this->fixed_point = a.getRawBits();
+    fixed_point = a.getRawBits();
 }
 
 Fixed::Fixed(int const b) {
-    this->setRawBits(b);
-    this->fixed_point *= (1 << this->fractional_bits);
+
+    fixed_point = b << fractional_bits;
 }
 
 Fixed::Fixed(float const c) {
-    float value = c * (float)(1 << this->fractional_bits);
-    this->fixed_point = roundf(value);
+    float value = c * (float)(1 << fractional_bits);
+    fixed_point = roundf(value);
 }
 
 int Fixed::getRawBits( void ) const {
@@ -25,23 +25,23 @@ int Fixed::getRawBits( void ) const {
 }
 
 void Fixed::setRawBits( int const raw ) {
-    this->fixed_point = raw;
+    fixed_point = raw;
 }
 
 float Fixed::toFloat( void ) const {
-    float value =  this->fixed_point / (float)(1 << this->fractional_bits);
+    float value =  fixed_point / (float)(1 << fractional_bits);
     return (value);
 }
 
 int Fixed::toInt( void ) const
 {
-    int value =  this->fixed_point / (1 << this->fractional_bits);
+    int value =  fixed_point / (1 << fractional_bits);
     return (value);
 }
 
 Fixed& Fixed::operator=(const Fixed& c)
 {
-    this->fixed_point = c.getRawBits();
+    fixed_point = c.getRawBits();
     return *this;
 }
 
@@ -51,64 +51,62 @@ std::ostream& operator<<(std::ostream& os,const Fixed& fixed)
     return os;
 }
 
-//  The 6 comparison operators: >, <, >=, <=, ==, and !=.
 
 bool Fixed::operator>(const Fixed& fixed) const {
-    return (this->fixed_point > fixed.fixed_point);
+    return (fixed_point > fixed.fixed_point);
 }
 
 bool Fixed::operator<(const Fixed& fixed) const {
-    return (this->fixed_point < fixed.fixed_point);
+    return (fixed_point < fixed.fixed_point);
 }
 
 bool Fixed::operator>=(const Fixed& fixed) const {
-    return (this->fixed_point >= fixed.fixed_point);
+    return (fixed_point >= fixed.fixed_point);
 }
 
 bool Fixed::operator<=(const Fixed& fixed) const {
-    return (this->fixed_point <= fixed.fixed_point);
+    return (fixed_point <= fixed.fixed_point);
 }
 
 bool Fixed::operator!=(const Fixed& fixed) const {
-    return (this->fixed_point != fixed.fixed_point);
+    return (fixed_point != fixed.fixed_point);
 }
 
-//  The 4 arithmetic operators: +, -, *, and /
 
 Fixed Fixed::operator+(const Fixed& fixed) const {
     Fixed c;
-    c.fixed_point = this->fixed_point + fixed.fixed_point;
+    c.fixed_point = fixed_point + fixed.fixed_point;
     return (c);
 }
 
 Fixed Fixed::operator*(const Fixed& fixed) const {
     Fixed c;
-    c.fixed_point = (this->fixed_point * fixed.fixed_point) / (1 << this->fractional_bits);
+    c.fixed_point = ((long)fixed_point * fixed.fixed_point) / (1 << fractional_bits);
     return (c);
 }
 
 Fixed Fixed::operator/(const Fixed& fixed) const {
     Fixed c;
-    c.fixed_point = ((float)this->fixed_point / (float)fixed.fixed_point) * (1 << this->fractional_bits);
+    c.fixed_point = ((float)fixed_point / (float)fixed.fixed_point) * (1 << fractional_bits);
     return (c);
 }
 
 Fixed Fixed::operator-(const Fixed& fixed) const {
     Fixed c;
-    c.fixed_point = this->fixed_point - fixed.fixed_point;
+    c.fixed_point = fixed_point - fixed.fixed_point;
     return (c);
 }
-// a++  ++a
+
 
 Fixed& Fixed::operator++() {
 
-    this->fixed_point += 0.00390625 * (1 << this->fractional_bits);
+    fixed_point += 1;
     return (*this);
 }
 
 Fixed Fixed::operator++(int) {
     Fixed time(*this);
-    this->fixed_point += 0.00390625 * (1 << this->fractional_bits);
+    fixed_point += 1;
     return (time);
 }
 

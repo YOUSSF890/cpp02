@@ -1,12 +1,14 @@
 #include "Fixed.hpp"
 
+const int Fixed::fractional_bits = 8;
+
 int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
     return (fixed_point);
 }
 
-void Fixed::setRawBits(const int raw)
+void Fixed::setRawBits(int const raw)
 {
     fixed_point = raw;
 }

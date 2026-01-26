@@ -96,21 +96,6 @@ Add static functions:
 
 ---
 
-## Exercise 03 – BSP (Optional)
-
-**Directory:** `ex03/`
-
-Create a `Point` class and implement the `bsp` function.
-
-The function checks if a point is **inside a triangle**.
-
-* Returns `true` only if the point is strictly inside
-* Returns `false` if the point is on an edge or vertex
-
-This exercise is optional.
-
----
-
 ## Submission
 
 * Push all files to your Git repository
